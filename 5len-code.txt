@@ -1,11 +1,12 @@
+
 addi x22, x0, 2 # setting loop variable to 2  = (x22 = 2) i loop
 addi x23, x0, 0 # setting loop variable to 5  = (x23 = 0) j loop
 addi x25, x0, 0 # setting array base address  = (x25 = 0)
 addi x24, x0, 2 # storing 2 for loop count    = (x24 = 2)
 addi x26, x0, 0 # setting sum to 0            = (x26 = 0)
 
-addi x1, x0, 0xB # defining a 1-byte number to be stored in array.
-addi x2, x0, 0xA
+addi x1, x0, 0xA # defining a 1-byte number to be stored in array.
+addi x2, x0, 0xB
 
 sb x1, 0(x25) # storing 1st element in index 0. Each element is of 1 byte.
 sb x2, 1(x25) # storing 2nd element in index 1

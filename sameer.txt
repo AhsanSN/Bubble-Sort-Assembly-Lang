@@ -1,0 +1,81 @@
+addi x22, x22, 0 # setting loop variable to 0
+addi x25, x25, 0 # setting array base address
+addi x24, x24, 20 # storing 20 for loop count
+addi x26, x26, 0 # setting sum to 0
+addi x1, x0, 13
+addi x2, x0,39
+addi x3, x0,10
+addi x4, x0,48
+addi x5, x0,17
+addi x6, x0,45
+addi x7, x0,60
+addi x8, x0,58
+addi x10, x0,6
+addi x11, x0,33
+addi x12, x0,20
+addi x13, x0,15
+addi x14, x0,35
+addi x15, x0,50
+addi x16, x0,21
+addi x17, x0,23
+addi x18, x0,36
+addi x19, x0,22
+addi x20, x0,61
+addi x21, x0,49
+sb x1, 0(x25) # storing 1st element in index 0. Each element is of 1 byte.
+sb x2, 1(x25) # storing 2nd element in index 1
+sb x3, 2(x25) # storing 3rd element in index 2
+sb x4, 3(x25) # storing 4th element in index 3
+sb x5, 4(x25) # storing 5th element in index 4
+sb x6, 5(x25) 
+sb x7, 6(x25) 
+sb x8, 7(x25) 
+sb x10, 8(x25) # storing 9th element in index 8
+sb x11, 9(x25) # storing 10th element in index 9
+sb x12, 10(x25) 
+sb x13, 11(x25) 
+sb x14, 12(x25) 
+sb x15, 13(x25)
+sb x16, 14(x25) 
+sb x17, 15(x25) 
+sb x18, 16(x25) 
+sb x19, 17(x25) 
+sb x20, 18(x25) # storing 19th element in index 18
+sb x21, 19(x25)
+outerLoop:
+addi x24, x24, -0x01
+addi x22,x0,0
+addi x25,x0,0
+beq x24, x0, Exit
+innerLoop:
+addi x22, x22,0x01
+lb x9, 0(x25)
+lb x27,1(x25)
+blt x9,x27,else
+sb x27,0(x25)
+sb x9,1(x25)
+else:
+addi x25, x22, 0
+bne x22, x24, innerLoop
+beq x0, x0, outerLoop
+Exit:
+lb x1, 0(x25)# SHOWING NUMBERS IN REGISTERS FOR OUTPUT
+lb x2, 1(x25)
+lb x3, 2(x25)
+lb x4, 3(x25)
+lb x5, 4(x25)
+lb x6, 5(x25)
+lb x7, 6(x25)
+lb x8, 7(x25)
+lb x9, 8(x25)
+lb x10, 9(x25)
+lb x11, 10(x25) 
+lb x12, 11(x25) 
+lb x13, 12(x25) 
+lb x14, 13(x25)
+lb x15, 14(x25) 
+lb x16, 15(x25) 
+lb x17, 16(x25) 
+lb x18, 17(x25) 
+lb x19, 18(x25)
+lb x20, 19(x25)
