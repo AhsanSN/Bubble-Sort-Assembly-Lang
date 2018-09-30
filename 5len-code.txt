@@ -1,30 +1,23 @@
-addi x22, x0, 5 # setting loop variable to 5  = (x22 = 5) i loop
+addi x22, x0, 2 # setting loop variable to 2  = (x22 = 2) i loop
 addi x23, x0, 0 # setting loop variable to 5  = (x23 = 0) j loop
 addi x25, x0, 0 # setting array base address  = (x25 = 0)
-addi x24, x0, 5 # storing 5 for loop count    = (x24 = 5)
+addi x24, x0, 2 # storing 2 for loop count    = (x24 = 2)
 addi x26, x0, 0 # setting sum to 0            = (x26 = 0)
 
-addi x1, x0, 0x09 # defining a 1-byte number to be stored in array.
-addi x2, x0, 0xD
-addi x3, x0, 0xA
-addi x4, x0, 0xB
-addi x5, x0, 0xC
+addi x1, x0, 0xB # defining a 1-byte number to be stored in array.
+addi x2, x0, 0xA
 
 sb x1, 0(x25) # storing 1st element in index 0. Each element is of 1 byte.
 sb x2, 1(x25) # storing 2nd element in index 1
-sb x3, 2(x25) # storing 3rd element in index 2
-sb x4, 3(x25) # storing 4th element in index 3
-sb x5, 4(x25) # storing 5th element in index 4
-
-addi x1, x0, -1 # settin to -1                = (x1 = -1)
 
 
 outerLoop:
 beq x22, x0, Exit # if (i!=0)
-add x23, x22, x0 # setting j=i 
+addi x22, x22, -1 # i = i - 1
+addi x23, x0, 0 # setting var=0 
 
 innerLoop:
-beq x23, x0, Exit # if (j!=0)
+beq x23, x22, Exit # if (j!=i)
 add x10, x23, x25 # setting x10=j
 lb x9, 0(x10)     # list[j]
 lb x29,1(x10)	  # list[j+1]
@@ -33,13 +26,13 @@ blt x9,x29,else
 sb x29,0(x10)
 sb x9,1(x10)
 				  # sb x10,0(x25)
-addi x22, x22, -1
-addi x23, x23, -1
+addi x23, x23, 1
 
 else:
-bne x23, x0, innerLoop
+bne x23, x22, innerLoop
 beq x0, x0, outerLoop
 
 
 Exit:
-
+lb x3, 0(x25)# SHOWING NUMBERS IN REGISTERS FOR OUTPUT
+lb x4, 1(x25)
