@@ -1,0 +1,68 @@
+addi x22, x0, 20 # setting loop variable to 0 = (x22 = 20)
+addi x25, x0, 0 # setting array base address  = (x25 = 0)
+addi x24, x0, 20 # storing 20 for loop count  = (x24 = 20)
+addi x26, x0, 0 # setting sum to 0            = (x26 = 0)
+
+addi x1, x0, 0x09 # defining a 1-byte number to be stored in array.
+addi x2, x0, 0xD
+addi x3, x0, 0xA
+addi x4, x0, 0xB
+addi x5, x0, 0xC
+addi x6, x0, 0xEF
+addi x7, x0, 0xFF
+addi x8, x0, 0x01
+addi x11, x0, 0x02
+addi x12, x0, 0x03
+addi x13, x0, 0x07
+addi x14, x0, 0x08
+addi x15, x0, 0xAA
+addi x16, x0, 0xCB
+addi x17, x0, 0xDF
+addi x18, x0, 0xFD
+addi x19, x0, 0xEB
+addi x20, x0, 0xEA
+addi x21, x0, 0xAC
+addi x29, x0, 0xAB
+
+sb x1, 0(x25) # storing 1st element in index 0. Each element is of 1 byte.
+sb x2, 1(x25) # storing 2nd element in index 1
+sb x3, 2(x25) # storing 3rd element in index 2
+sb x4, 3(x25) # storing 4th element in index 3
+sb x5, 4(x25) # storing 5th element in index 4
+sb x6, 5(x25) 
+sb x7, 6(x25) 
+sb x8, 7(x25) 
+sb x11, 8(x25) # storing 9th element in index 8
+sb x12, 9(x25) # storing 10th element in index 9
+sb x13, 10(x25) 
+sb x14, 11(x25) 
+sb x15, 12(x25) 
+sb x16, 13(x25)
+sb x17, 14(x25) 
+sb x18, 15(x25) 
+sb x19, 16(x25) 
+sb x20, 17(x25) 
+sb x21, 18(x25) # storing 19th element in index 18
+sb x29, 19(x25)
+
+outerLoop:
+beq x22, x0, Exit
+addi x22, x22, -1
+innerLoop:
+add x10, x22, x25
+lb x9, 0(x10)
+lb x29,1(x10)
+blt x9,x29,else
+sb x29,0(x10)
+sb x9,1(x10)
+sb x10,0(x25)
+else:
+bne x22, x0, innerLoop
+beq x0, x0, outerLoop
+
+
+
+
+
+Exit:
+
